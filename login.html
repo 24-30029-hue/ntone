@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" href="login.css">
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: Arial, sans-serif;
+    }
+    .bg-video {
+      position: fixed;
+      right: 0;
+      bottom: 0;
+      min-width: 100%;
+      min-height: 100%;
+      z-index: -1;
+      object-fit: cover; 
+    }
+
+    .container {
+      position: relative;
+      background: rgba(255, 255, 255, 0);
+      padding: 2rem;
+      border-radius: 10px;
+      width: 300px;
+      margin: auto;
+      top: 50%;
+      transform: translateY(-50%);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+
+    h2 {
+      text-align: center;
+    }
+
+    label {
+      display: block;
+      margin-top: 1rem;
+    }
+
+    input {
+      width: 100%;
+      padding: 0.5rem;
+      margin-top: 0.3rem;
+      border: 1px solid #cccccc00;
+      border-radius: 5px;
+    }
+
+    button {
+      margin-top: 1rem;
+      width: 100%;
+      padding: 0.7rem;
+      background: #193aa7;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #331eace8;
+    }
+  </style>
+</head>
+<body>
+  <video autoplay muted loop playsinline class="bg-video">
+    <source src="videoplaybackk.mp4" type="video/mp4">
+    Your browser does not support HTML5 video.
+  </video>
+
+  <div class="container">
+    <h2>Login</h2>
+    <form>
+      <label for="username"><strong>Username</strong></label>
+      <input type="text" id="username" 
+             pattern="^[A-Za-z0-9]{5,}$" 
+             title="Username must be at least 5 characters long and contain only letters or numbers">
+
+      <label for="password"><strong>Password</strong></label>
+      <input type="password" id="password" 
+             pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$" 
+             title="Password must be at least 8 characters long, with at least one letter and one number">
+
+      <button type="submit">Login</button>
+
+  <div class="links">
+    <a href="register.html">Register</a>
+    </form>
+  </div>
+  <script>
+    const validUser = "john123";
+    const validPass = "pass1234";
+
+    document.getElementById("loginForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const user = document.getElementById("username").value;
+      const pass = document.getElementById("password").value;
+      const errorMsg = document.getElementById("errorMsg");
+
+      if (user === validUser && pass === validPass) {
+        window.location.href = "landing.html"; 
+      } else {
+        errorMsg.textContent = "Invalid username or password.";
+      }
+    });
+  </script>
+</body>
+</html>
+
+</body>
+</html>

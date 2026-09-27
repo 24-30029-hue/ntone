@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register Page with Video Background</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: Arial, sans-serif;
+    }
+
+    .bg-video {
+      position: fixed;
+      right: 0;
+      bottom: 0;
+      min-width: 100%;
+      min-height: 100%;
+      z-index: -1;
+      object-fit: cover;
+    }
+
+    .container {
+      position: relative;
+      background: rgba(255, 255, 255, 0);
+      padding: 2rem;
+      border-radius: 10px;
+      width: 320px;
+      margin: auto;
+      top: 50%;
+      transform: translateY(-50%);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+
+    h2 { text-align: center; }
+
+    label { display: block; margin-top: 1rem; }
+
+    input {
+      width: 100%;
+      padding: 0.5rem;
+      margin-top: 0.3rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      margin-top: 1rem;
+      width: 100%;
+      padding: 0.7rem;
+      background: #2196F3;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover { background: #1976D2; }
+
+    .links {
+      text-align: center;
+      margin-top: 1rem;
+    }
+
+    .links a {
+      color: #333;
+      text-decoration: none;
+      margin: 0 5px;
+    }
+
+    .error {
+      color: red;
+      text-align: center;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <video autoplay muted loop playsinline class="bg-video">
+    <source src="videoplaybackk.mp4" type="video/mp4">
+  </video>
+
+  <div class="container">
+    <h2>Register</h2>
+    <form id="registerForm">
+      <label for="fullname"><strong>Full Name</strong></label>
+      <input type="text" id="fullname">
+
+      <label for="email"><strong>Email</strong></label>
+      <input type="email" id="email">
+
+      <label for="username"><strong>Username</strong></label>
+      <input type="text" id="username" minlength="5" maxlength="12">
+
+      <label for="password"><strong>Password</strong></label>
+      <input type="password" id="password" minlength="8" maxlength="16">
+
+      <label for="confirm"><strong>Confirm Password</strong></label>
+      <input type="password" id="confirm">
+
+      <button type="submit">Register</button>
+      <div class="error" id="errorMsg"></div>
+    </form>
+    <div class="links">
+      <a href="login.html">Already have an account? Login</a>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("registerForm").addEventListener("submit", function(e) {
+      e.preventDefault(); // stop default form action
+
+      const pass = document.getElementById("password").value;
+      const confirm = document.getElementById("confirm").value;
+      const errorMsg = document.getElementById("errorMsg");
+
+      if (pass !== confirm) {
+        errorMsg.textContent = "Passwords do not match!";
+      } else {
+        errorMsg.textContent = "";
+        alert("Registration successful!");
+        window.location.href = "login.html"; // redirect to login page
+      }
+    });
+  </script>
+</body>
+</html>
